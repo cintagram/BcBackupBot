@@ -13,16 +13,6 @@ from os import walk
 from modules import CONFIG, addjson
 from modules.modalclass import TCInputModal, loadsave, makeinfo
 
-#Unused
-class CashUse(Enum):
-  활성화="True"
-  비활성화="False"
-  
-#Unused
-async def SendDisallowedMsg(interaction: Interaction):
-  embed = discord.Embed(title="사용금지됨", description="서버가 봇 개발자에 의해 사용금지처리되었습니다.\n개발자에게 문의해주새요.")
-  await interaction.response.send_message(embed=embed)
-
 def serverpath(id: str):
       return os.path.abspath(os.path.join(os.path.join(os.path.join(os.path.curdir, "bc_saves"), "servers"), id))
 
@@ -50,13 +40,6 @@ def savesrvset(srvid: str, newset):
   setobj = json.loads(setreader_str)
   setobj[srvid] = newset
   open(os.path.join(os.path.join(os.path.curdir, "modules"), "serversettings.json"), "w+", encoding="utf-8").write(json.dumps(setobj))
-  
-def chksrvallowed(id: str):
-  set = loadsrvset(id)
-  if set["UsingAllowed"] == "True":
-    return True
-  else:
-    return False
 
 class MyClient(discord.Client):
   async def on_ready(self):
@@ -89,7 +72,6 @@ async def sendbtn(interaction:Interaction):
     filenames=os.listdir(mypath)
     filenamesnum=len(filenames)
     print(filenamesnum)
-		#count = len(filenamesnum)
     while i <= filenamesnum:
       i += 1
       if i == filenamesnum or filenames[i] == None:
@@ -111,8 +93,8 @@ async def sendbtn(interaction:Interaction):
 
   async def button_callback(interaction:Interaction):
     set = loadsrvset(str(interaction.guild_id))
-    if not chksrvallowed(str(interaction.guild_id)):
-      await SendDisallowedMsg(interaction)
+    if 1 == 2: #i dont have tab btn now (ipad) so
+	pass
     else:
       usr = int(interaction.user.id)
       userpath = os.path.join(srvmemberpath(str(interaction.guild_id), str(usr)), "userdata.csv")
