@@ -2,21 +2,7 @@ import json
 
 def adddata(settings, srvids):
             THIS_JSON = '''
-{
-  "UsingAllowed": "True",
-  "CmdChannel": "undefined",
-  "NoticeWebhook": "undefined",
-  "SrvAdminRole": "undefined",
-  "CashSystemSetting": {
-    "Use": "False",
-    "CashName": "undefined",
-    "PricePerUse": 0,
-    "UseAttendReward": {
-      "Use": "False",
-      "Amount": 0
-    }
-  }
-}
+{"Enrolled": "True"}
 '''
             try:
                 this_data = json.loads(THIS_JSON)
