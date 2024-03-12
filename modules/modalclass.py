@@ -11,8 +11,8 @@ import BCSFE_Python_Discord as BCSFE_Python
 from BCSFE_Python_Discord import *
 
 def makeinfo(userid: str):
-      csvline = """UserId,CashAmount,IsBanned
-{},0,False
+      csvline = """UserId,IsBanned
+{},False
 """.format(userid)
       return csvline
 
