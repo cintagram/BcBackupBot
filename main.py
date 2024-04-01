@@ -72,12 +72,13 @@ async def sendbtn(interaction:Interaction):
     filenames=os.listdir(mypath)
     filenamesnum=len(filenames)
     print(filenamesnum)
+    k = False
     while i <= filenamesnum:
       i += 1
       if i == filenamesnum or filenames[i] == None:
         print("i is None")
         text1 = "No Save Files.\nPlease use backup first."
-        k = False
+        #k = False
         break
       else:
         if not filenames[i] == "userdata.csv":
