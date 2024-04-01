@@ -76,14 +76,20 @@ async def sendbtn(interaction:Interaction):
       i += 1
       if i == filenamesnum or filenames[i] == None:
         print("i is None")
+        text1 = "No Save Files.\nPlease use backup first."
+        k = False
         break
       else:
         if not filenames[i] == "userdata.csv":
+          k = True
           text1 = str(i+1) + ". " + filenames[i] + "\n"
           select.add_option(label=text1, value=str(i+1), description="Save file")
     view = ui.View()
     view.add_item(select)
-    await interaction.response.send_message(ephemeral=True, view=view, delete_after=120.0, content="Select file in 2 minutes")
+    if k:
+      await interaction.response.send_message(ephemeral=True, view=view, delete_after=120.0, content="Select file in 2 minutes")
+    else:
+      await interaction.response.send_message(ephemeral=True, content=text1, delete_after=30.0)
     async def loadfile_select_cb(interaction:Interaction):
       filenum = int(select.values[0])
       selectedfile = filenames[filenum-1]
